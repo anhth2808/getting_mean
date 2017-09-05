@@ -1,0 +1,8 @@
+simple level of MVC
+
+1. A request come into the application
+2. The request get routed to a controller
+3. A contoller, if necessary, makes a request to model
+4. The model responds to the controller
+5. The controller sends a response to a view
+6. The view send a response to the original requester
