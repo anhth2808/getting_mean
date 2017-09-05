@@ -1,2 +1,0 @@
-# GM
-Getting MEAN
