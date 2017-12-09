@@ -1,6 +1,7 @@
 var mongoose = require("mongoose");
 var gracefulShutdown;
 var dbURI = "mongodb://localhost/Loc8r";
+require("./locations");
 mongoose.connect(dbURI);
 
 
@@ -19,19 +20,19 @@ if (process.platform === "win32") {
 
 // listen for mongoose connection events ad output statues to console
 mongoose.connection.on("connected", function () {
-    console.log("mongoose connected to " + dbURI);
+    console.log("Mongoose connected to " + dbURI);
 });
 mongoose.connection.on("error", function (err) {
-    console.log("mongoose connection error" + err);
+    console.log("Mongoose connection error" + err);
 });
 mongoose.connection.on("disconnected", function () {
-    console.log("mongoose disconnected");
+    console.log("Mongoose disconnected");
 });
 
 // reusable function to close mongoose connection
 gracefulShutdown = function (msg, callback) {
     mongoose.connection.close(function () {
-        console.log("mongoose disconnected through " + msg);
+        console.log("Mongoose disconnected through " + msg);
         callback();
     });
 };
@@ -39,13 +40,13 @@ gracefulShutdown = function (msg, callback) {
 // listen to node
 // for nodemon restarts
 process.once("SIGUSR2", function () {
-    gracefulShutdown("nodemon restart", function () {
+    gracefulShutdown("Nodemon restart", function () {
         process.kill(process.pid, "SIGUSR2");
     });
 });
 // for app termination
 process.on("SIGINT", function () {
-    gracefulShutdown("app termination", function () {
+    gracefulShutdown("App termination", function () {
         process.exit(0);
     });
 });
