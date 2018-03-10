@@ -4,8 +4,7 @@ var dbURI = "mongodb://localhost/Loc8r";
 require("./locations");
 mongoose.connect(dbURI);
 
-
-// windown
+// window
 var readline = require("readline");
 if (process.platform === "win32") {
     var rl = readline.createInterface ({
