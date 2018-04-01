@@ -1,0 +1,11 @@
+$("addReview").submit(function(e) {
+    $(".alert.alert-danger").hide();
+    if (!$("input#name").val() || !$("input#rating").val() || !$("input#review").val()) {
+        if ($(".alert.alert-danger").length) {
+            $(".alert.alert-danger").show();
+        } else {
+            $(this).prepend("<div role='alert' class='alert alert-danger'>All fienlds required, please try again</div>");
+        }
+        return false;
+    }
+});

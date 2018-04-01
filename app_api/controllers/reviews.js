@@ -40,7 +40,7 @@ var doSetAverageRating = function(location) {
 };
 
 var doAddReview = function(req, res, location) {
-    if (!location) {
+    if (!location) { 
         sendJsonResponse(res, 404, {
             "message": "locationid not found"
         });
@@ -53,7 +53,8 @@ var doAddReview = function(req, res, location) {
         location.save(function(err, location) {
             var thisReview;
             if (err) {
-                sendJsonResponse(res, 404, err);
+                console.log("err:", err);
+                sendJsonResponse(res, 400, err);
             } else {
                 updateAverageRating(location._id);
                 thisReview = location.reviews[location.reviews.length - 1];
